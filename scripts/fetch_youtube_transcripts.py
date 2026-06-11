@@ -7,11 +7,18 @@ Two methods, in order of preference:
 
 Usage:
   pip install youtube-transcript-api requests
-  python fetch_youtube_transcripts.py <video_id_or_url> [more ids...] --author "jason-bay"
+  python fetch_youtube_transcripts.py <video_id_or_url> --author jason-bay \
+      --title "..." --published 2025-11-04 --why "why it matters for the playbook"
+
+  Multiple ids are allowed for a quick bulk pull, but --title/--published/--why
+  apply to the whole call, so fetch one video at a time when you want per-video
+  metadata (the normal collection path).
 
 Output:
   ../research/youtube-transcripts/<author>/<video_id>.md
-  with a metadata header (video id, URL, fetch date, method).
+  Each file has front-matter (video id, title, URL, publish date, fetch date,
+  method) plus a "Why it matters for the playbook" note and the transcript,
+  matching the repo's per-file quality bar.
 """
 
 import argparse
@@ -93,17 +100,33 @@ def fetch_via_supadata(video_id: str) -> str | None:
         return None
 
 
-def save_transcript(author: str, video_id: str, text: str, method: str) -> str:
+def save_transcript(
+    author: str,
+    video_id: str,
+    text: str,
+    method: str,
+    title: str | None = None,
+    published: str | None = None,
+    why: str | None = None,
+) -> str:
     out_dir = os.path.join(OUT_ROOT, author)
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{video_id}.md")
+    title = title or "(title not set)"
+    published = published or "unknown"
+    why = why or "TODO: why this matters for the cold-outreach playbook."
     header = (
         f"---\n"
         f"video_id: {video_id}\n"
+        f"title: {title}\n"
         f"url: https://www.youtube.com/watch?v={video_id}\n"
+        f"published: {published}\n"
         f"fetched: {datetime.date.today().isoformat()}\n"
         f"method: {method}\n"
         f"---\n\n"
+        f"# {title}\n\n"
+        f"## Why it matters for the playbook\n{why}\n\n"
+        f"## Transcript\n"
     )
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(header + text.strip() + "\n")
@@ -114,6 +137,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("videos", nargs="+", help="Video IDs or URLs")
     parser.add_argument("--author", required=True, help="Folder name, e.g. jason-bay")
+    parser.add_argument("--title", help="Video title (applies to this call)")
+    parser.add_argument("--published", help="Publish date YYYY-MM-DD (applies to this call)")
+    parser.add_argument("--why", help="Why it matters for the playbook (1-3 sentences)")
     args = parser.parse_args()
 
     failures = []
@@ -128,7 +154,10 @@ def main() -> None:
         if not text:
             failures.append(vid)
             continue
-        path = save_transcript(args.author, vid, text, method)
+        path = save_transcript(
+            args.author, vid, text, method,
+            title=args.title, published=args.published, why=args.why,
+        )
         print(f"  saved -> {os.path.relpath(path)}")
 
     if failures:
