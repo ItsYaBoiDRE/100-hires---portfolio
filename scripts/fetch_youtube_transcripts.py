@@ -100,6 +100,16 @@ def fetch_via_supadata(video_id: str) -> str | None:
         return None
 
 
+def _yaml_str(value: str) -> str:
+    """Return a YAML-safe double-quoted scalar.
+
+    Titles often start with characters YAML treats specially ('[' starts a
+    flow sequence, '*' is an alias reference), so always quote them.
+    """
+    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+    return f'"{escaped}"'
+
+
 def save_transcript(
     author: str,
     video_id: str,
@@ -118,7 +128,7 @@ def save_transcript(
     header = (
         f"---\n"
         f"video_id: {video_id}\n"
-        f"title: {title}\n"
+        f"title: {_yaml_str(title)}\n"
         f"url: https://www.youtube.com/watch?v={video_id}\n"
         f"published: {published}\n"
         f"fetched: {datetime.date.today().isoformat()}\n"
