@@ -44,7 +44,7 @@ docs/
 
 | Author | LinkedIn posts | YT/podcast transcripts | Status |
 |---|---|---|---|
-| Jason Bay | 0 | 0 | pending |
+| Jason Bay | 0 | 3 | transcripts ✓ (cold email 85M study, cold-calling hot take, Rippling outbound); LinkedIn pending |
 | Josh Braun | 0 | 0 | pending |
 | 30MPC | — | 0 | pending |
 | Will Allred | 0 | 0 | pending |
