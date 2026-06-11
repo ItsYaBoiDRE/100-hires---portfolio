@@ -43,17 +43,19 @@ A cold outreach *pipeline* has four layers. The list deliberately covers all of 
 - **Why:** Lavender sits inside millions of sales emails, so his posts are grounded in observed reply-rate data (e.g., reading-level findings, mobile preview behaviour) rather than opinion. Best source for "what the data says" claims in the playbook.
 - **Collect:** LinkedIn posts + podcast guest appearances (search his name on Spotify/YouTube and pull transcripts).
 
-### 5. Florin Tatulea — Sales development leader (Plato → Barley → Common Room; verify current role)
+### 5. Florin Tatulea — GTM Engineering @ ZoomInfo (prev. Head of Sales Development, Common Room; Director of Sales, Barley; Director of Sales Development, Plato)
 - **Layer:** Cold email frameworks + SDR leadership
-- **LinkedIn:** https://www.linkedin.com/in/florintatulea
-- **Why:** A working SDR leader, not a full-time creator. Known for frameworks-over-templates thinking, subject line/preview-text breakdowns, and tear-downs of real emails that got CEO replies. His course "Cold Email Conversion Machine" (with pclub.io) distils 9 years of practice.
+- **LinkedIn:** https://www.linkedin.com/in/florintatulea (LinkedIn Top Voice)
+- **Why:** A working practitioner, not a full-time creator. Known for frameworks-over-templates thinking, subject line/preview-text breakdowns, and tear-downs of real emails that got CEO replies. His course "Cold Email Conversion Machine" (with pclub.io) distils 9+ years of practice; recent posts lean into GTM/AI engineering.
 - **Collect:** LinkedIn posts + podcast appearances (Outbound Squad, pclub interviews) as transcripts.
+- **Role checked:** 2026-06-11 — moved from Common Room to ZoomInfo (GTM Engineering) since this list was first drafted.
 
-### 6. Kyle Coleman — CMO (Clari → Copy.ai; verify current role)
+### 6. Kyle Coleman — Global VP Marketing @ ClickUp (prev. CMO, Copy.ai; SVP Marketing/CMO, Clari)
 - **Layer:** Messaging + SDR→exec perspective
 - **LinkedIn:** https://www.linkedin.com/in/kyletcoleman
-- **Why:** Rare voice who scaled from SDR to CMO and writes about cold email from the buyer-executive seat ("here's the cold email I actually replied to"). Bridges rep tactics and what leadership actually evaluates.
+- **Why:** Rare voice who scaled from SDR to senior marketing leadership and writes about cold email from the buyer-executive seat ("here's the cold email I actually replied to"). Bridges rep tactics and what leadership actually evaluates.
 - **Collect:** LinkedIn posts + webinar recordings.
+- **Role checked:** 2026-06-11 — moved from Copy.ai (CMO) to ClickUp (Global VP Marketing) since this list was first drafted.
 
 ### 7. Becc Holland — CEO, Flip the Script
 - **Layer:** Personalization & call frameworks
@@ -62,12 +64,13 @@ A cold outreach *pipeline* has four layers. The list deliberately covers all of 
 - **Why:** Built the most systematic public framework for personalization at scale ("personalize to the person, relevance to the persona"). Free long-form video curriculum makes her ideal for transcript collection.
 - **Collect:** YouTube series transcripts.
 
-### 8. Morgan J Ingram — AMP Creative (ex-JB Sales)
+### 8. Morgan J Ingram — CEO & Founder, AMP (a.k.a. AMP Social) (ex-JB Sales)
 - **Layer:** Multichannel + video prospecting
-- **LinkedIn:** https://www.linkedin.com/in/morganjingram
+- **LinkedIn:** https://www.linkedin.com/in/morganjingramamp
 - **YouTube:** active channel
-- **Why:** Former 3x LinkedIn Top Sales Voice; the reference voice on video prospecting and LinkedIn touches inside sequences. Now runs content-led GTM, which connects outbound to the "allbound" trend.
+- **Why:** Former 3x LinkedIn Top Sales Voice; the reference voice on video prospecting and LinkedIn touches inside sequences. Now runs content-led GTM (pairing experts/influencers with B2B sales teams), which connects outbound to the "allbound" trend.
 - **Collect:** YouTube transcripts + LinkedIn posts.
+- **Role checked:** 2026-06-11 — LinkedIn handle corrected (was `morganjingram` → `morganjingramamp`); company is AMP / AMP Social.
 
 ### 9. Eric Nowoslawski — Founder, Growth Engine X
 - **Layer:** Systems & infrastructure (Clay, deliverability, list building)
@@ -78,9 +81,11 @@ A cold outreach *pipeline* has four layers. The list deliberately covers all of 
 
 ### 10. Sam Nelson — Founder, SDRLeader.com (ex-Outreach)
 - **Layer:** Sequencing & SDR ops
-- **LinkedIn:** https://www.linkedin.com/in/samnelsonsdr
+- **LinkedIn:** https://www.linkedin.com/in/realsamnelson
+- **Substack:** https://samnelson.substack.com (Agoge sequence breakdowns + example copy)
 - **Why:** Creator of the widely-copied Agoge sequence while leading SDRs at Outreach; now runs SDR leadership communities. Best primary source on sequence structure and SDR team mechanics.
 - **Collect:** LinkedIn posts + webinar/podcast transcripts.
+- **Role checked:** 2026-06-11 — role confirmed; LinkedIn handle corrected (was `samnelsonsdr` → `realsamnelson`).
 
 ---
 
@@ -96,3 +101,11 @@ A cold outreach *pipeline* has four layers. The list deliberately covers all of 
 - All LinkedIn URLs above follow the public vanity-URL pattern; confirm each resolves before committing.
 - Current job titles marked "verify" were accurate at last public mention but may have changed.
 - Any statistic quoted from these sources in the future playbook must link the original post/episode with date.
+
+### 2026-06-11 role/handle verification pass (web search of each person's public profile)
+- **Florin Tatulea** — CHANGED: now *GTM Engineering @ ZoomInfo* (was Common Room). Handle `florintatulea` ✓.
+- **Kyle Coleman** — CHANGED: now *Global VP Marketing @ ClickUp* (was CMO @ Copy.ai). Handle `kyletcoleman` ✓.
+- **Morgan J Ingram** — handle corrected `morganjingram` → `morganjingramamp`; now *CEO & Founder, AMP / AMP Social*.
+- **Sam Nelson** — handle corrected `samnelsonsdr` → `realsamnelson`; role (Founder, SDRLeader.com) unchanged.
+- **Confirmed unchanged:** Jason Bay (`jasondbay`, Outbound Squad), Josh Braun (`josh-braun`), Will Allred (`williamallred`, Co-Founder & COO, Lavender), Becc Holland (`beccholland-flipthescript`, CEO Flip the Script), Eric Nowoslawski (`outboundphd`, Growth Engine X).
+- **Not separately re-verified:** Armand Farrokh & Nick Cegelski (30MPC) — they run the eponymous media company; confirm before quoting the "~300M cold calls" figure.
