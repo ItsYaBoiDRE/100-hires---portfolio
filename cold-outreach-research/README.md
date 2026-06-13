@@ -46,7 +46,7 @@ docs/
 |---|---|---|---|
 | Jason Bay | 0 | 3 | transcripts ✓ (cold email 85M study, cold-calling hot take, Rippling outbound); LinkedIn pending |
 | Josh Braun | 0 | 0 | pending |
-| 30MPC | — | 0 | pending |
+| 30MPC | — | 3 | transcripts ✓ (cold-call opener, cold-call objection handling, cold-email sequence) |
 | Will Allred | 0 | 0 | pending |
 | Florin Tatulea | 0 | 0 | pending |
 | Kyle Coleman | 0 | 0 | pending |
