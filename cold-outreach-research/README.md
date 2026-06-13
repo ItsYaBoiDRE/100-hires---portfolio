@@ -47,11 +47,11 @@ docs/
 | Jason Bay | 0 | 3 | transcripts ✓ (cold email 85M study, cold-calling hot take, Rippling outbound); LinkedIn pending |
 | Josh Braun | 0 | 2 | transcripts ✓ (cold-call script + 7 objections, techniques that get responses); LinkedIn-primary, posts pending |
 | 30MPC | — | 3 | transcripts ✓ (cold-call opener, cold-call objection handling, cold-email sequence) |
-| Will Allred | 0 | 0 | pending |
-| Florin Tatulea | 0 | 0 | pending |
-| Kyle Coleman | 0 | 0 | pending |
+| Will Allred | 0 | 2 | transcripts ✓ (real 2025 campaign lessons, smarter outbound w/ Lavender data) |
+| Florin Tatulea | 0 | 2 | transcripts ✓ (2026 cold-email showdown; pclub cold-email secrets, 2023) |
+| Kyle Coleman | 0 | 1 | transcript ✓ (AI for prospecting executives); 2nd (GTM/AI) pending Supadata async |
 | Becc Holland | 0 | 2 | transcripts ✓ (2025 outbound playbook; signature "math of personalization", 2024) |
 | Morgan J Ingram | 0 | 3 | transcripts ✓ (next-level pipeline, AI-assisted selling, LinkedIn prospecting workshop 2024) |
 | Eric Nowoslawski | 0 | 3 | transcripts ✓ (Clay+Smartlead tech stack, personalization at 1.5M scale, cold-email restart) |
-| Sam Nelson | 0 | 0 | pending |
+| Sam Nelson | 0 | 2 | transcripts ✓ (crush SD in 2025; winning outbound sequence strategy, 2024) |
 
