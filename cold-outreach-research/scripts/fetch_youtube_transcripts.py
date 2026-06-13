@@ -31,6 +31,7 @@ import datetime
 import os
 import re
 import sys
+import time
 
 import requests
 
@@ -92,17 +93,57 @@ def fetch_via_supadata(video_id: str) -> str | None:
         data = resp.json()
         # text=true -> {"content": <str>, "lang": ..., "availableLangs": [...]}
         # (.get("text") kept as a defensive fallback for older responses).
-        text = data.get("content") or data.get("text")
+        text = _supadata_text(data)
         if not text and data.get("jobId"):
-            # Long videos / mode=generate return an async jobId to poll at
-            # /v1/transcript/{jobId}; not handled here — re-run usually serves
-            # the cached result synchronously.
-            print(f"  [Supadata returned async jobId {data['jobId']}; "
-                  "polling not implemented — re-run to fetch cached result]")
+            # Long videos / mode=generate return an async jobId; poll for it.
+            print(f"  [Supadata async jobId {data['jobId']}; polling...]")
+            text = _poll_supadata_job(data["jobId"], key)
         return text
     except Exception as exc:  # noqa: BLE001
         print(f"  [Supadata failed: {exc}]")
         return None
+
+
+def _supadata_text(data: dict) -> str | None:
+    """Pull plain text from a Supadata transcript payload.
+
+    With text=true `content` is a string; defensively handle the segment-array
+    form (text=false) and the older `text` key too.
+    """
+    content = data.get("content")
+    if isinstance(content, list):
+        return "\n".join(
+            seg.get("text", "") for seg in content if isinstance(seg, dict)
+        ).strip() or None
+    return content or data.get("text")
+
+
+def _poll_supadata_job(job_id: str, key: str, attempts: int = 15, delay: int = 5) -> str | None:
+    """Poll Supadata's async transcript job until it completes.
+
+    GET /v1/transcript/{jobId} returns {"status": "queued|active|completed|failed",
+    ..., "content": ...}. Returns the transcript text once status=completed and
+    content is present, else None.
+    """
+    url = f"https://api.supadata.ai/v1/transcript/{job_id}"
+    for _ in range(attempts):
+        time.sleep(delay)
+        try:
+            resp = requests.get(url, headers={"x-api-key": key}, timeout=60)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception as exc:  # noqa: BLE001
+            print(f"  [Supadata job poll failed: {exc}]")
+            return None
+        status = data.get("status")
+        if status == "failed":
+            print("  [Supadata job failed]")
+            return None
+        text = _supadata_text(data)
+        if status == "completed" and text:
+            return text
+    print("  [Supadata job still processing after polling window]")
+    return None
 
 
 def fetch_metadata_via_supadata(video_id: str) -> dict:
