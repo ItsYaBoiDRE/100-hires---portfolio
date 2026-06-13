@@ -45,7 +45,7 @@ docs/
 | Author | LinkedIn posts | YT/podcast transcripts | Status |
 |---|---|---|---|
 | Jason Bay | 0 | 3 | transcripts ✓ (cold email 85M study, cold-calling hot take, Rippling outbound); LinkedIn pending |
-| Josh Braun | 0 | 0 | pending |
+| Josh Braun | 0 | 2 | transcripts ✓ (cold-call script + 7 objections, techniques that get responses); LinkedIn-primary, posts pending |
 | 30MPC | — | 3 | transcripts ✓ (cold-call opener, cold-call objection handling, cold-email sequence) |
 | Will Allred | 0 | 0 | pending |
 | Florin Tatulea | 0 | 0 | pending |
