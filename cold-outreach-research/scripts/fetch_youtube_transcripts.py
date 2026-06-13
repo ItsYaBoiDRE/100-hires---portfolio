@@ -14,6 +14,11 @@ Usage:
   apply to the whole call, so fetch one video at a time when you want per-video
   metadata (the normal collection path).
 
+  If --title / --published are omitted and SUPADATA_API_KEY is set, they are
+  auto-filled from Supadata's YouTube video-metadata endpoint, so usually you
+  only need to pass --why. Use --source supadata to skip the free library
+  outright (e.g. when this machine's IP is being YouTube-rate-limited).
+
 Output:
   ../research/youtube-transcripts/<author>/<video_id>.md
   Each file has front-matter (video id, title, URL, publish date, fetch date,
@@ -81,7 +86,7 @@ def fetch_via_supadata(video_id: str) -> str | None:
                 "lang": "en",
             },
             headers={"x-api-key": key},
-            timeout=60,
+            timeout=120,
         )
         resp.raise_for_status()
         data = resp.json()
@@ -98,6 +103,36 @@ def fetch_via_supadata(video_id: str) -> str | None:
     except Exception as exc:  # noqa: BLE001
         print(f"  [Supadata failed: {exc}]")
         return None
+
+
+def fetch_metadata_via_supadata(video_id: str) -> dict:
+    """Fetch title + upload date from Supadata's YouTube video-metadata endpoint.
+
+    Returns {"title": str|None, "published": "YYYY-MM-DD"|None, "channel": str|None}.
+    Server-side, so it works even when this machine's IP is YouTube-rate-limited.
+    Empty dict if no key or on error.
+    """
+    key = os.environ.get("SUPADATA_API_KEY")
+    if not key:
+        return {}
+    try:
+        resp = requests.get(
+            "https://api.supadata.ai/v1/youtube/video",
+            params={"id": video_id},
+            headers={"x-api-key": key},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        channel = (data.get("channel") or {}).get("name")
+        return {
+            "title": data.get("title"),
+            "published": (data.get("uploadDate") or "")[:10] or None,
+            "channel": channel,
+        }
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [Supadata metadata failed: {exc}]")
+        return {}
 
 
 def _yaml_str(value: str) -> str:
@@ -150,25 +185,40 @@ def main() -> None:
     parser.add_argument("--title", help="Video title (applies to this call)")
     parser.add_argument("--published", help="Publish date YYYY-MM-DD (applies to this call)")
     parser.add_argument("--why", help="Why it matters for the playbook (1-3 sentences)")
+    parser.add_argument(
+        "--source", choices=["auto", "library", "supadata"], default="auto",
+        help="Transcript source: auto (library then Supadata), or force one.",
+    )
     args = parser.parse_args()
 
     failures = []
     for raw in args.videos:
         vid = extract_video_id(raw)
         print(f"Fetching {vid} ...")
-        text = fetch_via_library(vid)
-        method = "youtube-transcript-api"
-        if not text:
+        text = method = None
+        if args.source in ("auto", "library"):
+            text = fetch_via_library(vid)
+            method = "youtube-transcript-api"
+        if not text and args.source in ("auto", "supadata"):
             text = fetch_via_supadata(vid)
             method = "supadata"
         if not text:
             failures.append(vid)
             continue
+
+        # Auto-fill title/published from Supadata metadata when not supplied.
+        title, published = args.title, args.published
+        if not title or not published:
+            meta = fetch_metadata_via_supadata(vid)
+            title = title or meta.get("title")
+            published = published or meta.get("published")
+
         path = save_transcript(
             args.author, vid, text, method,
-            title=args.title, published=args.published, why=args.why,
+            title=title, published=published, why=args.why,
         )
-        print(f"  saved -> {os.path.relpath(path)}")
+        print(f"  saved -> {os.path.relpath(path)} "
+              f"(title={'set' if title else 'MISSING'}, published={published or 'MISSING'})")
 
     if failures:
         print(f"\nFailed: {', '.join(failures)}", file=sys.stderr)
