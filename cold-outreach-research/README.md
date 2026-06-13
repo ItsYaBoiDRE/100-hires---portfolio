@@ -36,11 +36,13 @@ docs/
 
 ## How content was collected
 
-- **YouTube transcripts:** fetched with `scripts/fetch_youtube_transcripts.py` — tries the free `youtube-transcript-api` first, falls back to Supadata's API (free tier). Each file carries a metadata header: video ID, URL, fetch date, method.
+- **YouTube/podcast transcripts:** fetched with `scripts/fetch_youtube_transcripts.py`, which tries the free `youtube-transcript-api` first and falls back to the Supadata API. In practice YouTube IP-rate-limited the free path after the first author, so most transcripts were pulled via Supadata — also using its metadata endpoint to auto-fill each video's title and publish date, and polling its async-job endpoint for long videos. Each file carries front-matter (video ID, title, URL, publish date, fetch date, method) plus a short "Why it matters for the playbook" note.
 - **LinkedIn posts:** collected manually (copy from the public post + record URL and date) using the template in `research/linkedin-posts/_TEMPLATE.md`. Automated LinkedIn scraping violates LinkedIn's Terms of Service, so this repo intentionally uses manual collection.
 - **Attribution:** all collected material remains the intellectual property of its authors and is stored here for private research/analysis only. Every file links its original source.
 
 ## Collection status
+
+_23 transcripts across all 10 experts (Kyle Coleman's 2nd pending an API retry). LinkedIn posts collected manually — in progress._
 
 | Author | LinkedIn posts | YT/podcast transcripts | Status |
 |---|---|---|---|
