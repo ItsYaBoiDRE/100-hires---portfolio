@@ -55,4 +55,3 @@ docs/
 | Eric Nowoslawski | 0 | 0 | pending |
 | Sam Nelson | 0 | 0 | pending |
 
-(Update this table with every commit.)
