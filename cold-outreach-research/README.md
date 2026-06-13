@@ -52,6 +52,6 @@ docs/
 | Kyle Coleman | 0 | 0 | pending |
 | Becc Holland | 0 | 0 | pending |
 | Morgan J Ingram | 0 | 0 | pending |
-| Eric Nowoslawski | 0 | 0 | pending |
+| Eric Nowoslawski | 0 | 3 | transcripts ✓ (Clay+Smartlead tech stack, personalization at 1.5M scale, cold-email restart) |
 | Sam Nelson | 0 | 0 | pending |
 
