@@ -51,7 +51,7 @@ docs/
 | Florin Tatulea | 0 | 0 | pending |
 | Kyle Coleman | 0 | 0 | pending |
 | Becc Holland | 0 | 2 | transcripts ✓ (2025 outbound playbook; signature "math of personalization", 2024) |
-| Morgan J Ingram | 0 | 0 | pending |
+| Morgan J Ingram | 0 | 3 | transcripts ✓ (next-level pipeline, AI-assisted selling, LinkedIn prospecting workshop 2024) |
 | Eric Nowoslawski | 0 | 3 | transcripts ✓ (Clay+Smartlead tech stack, personalization at 1.5M scale, cold-email restart) |
 | Sam Nelson | 0 | 0 | pending |
 
